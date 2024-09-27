@@ -1,0 +1,148 @@
+/* 공통 스타일 */
+
+
+/* 로그인 페이지 전체 레이아웃 */
+.login-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #6100ff; /* 페이지 배경색 */
+  justify-content: center; /* 수직 중앙 정렬 */
+  align-items: center; /* 수평 중앙 정렬 */
+}
+
+/* 로그인 컨테이너 스타일 */
+.login-container {
+  display: flex;
+  width: 90%;
+  max-width: 1400px;
+  flex: 1;
+}
+
+/* 로그인 페이지 왼쪽 영역 */
+.login-left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 10%;
+}
+
+.login-left .illustration {
+  max-width: 95%;
+}
+
+.login-left .illustration img {
+  width: 100%; /* 이미지가 부모 요소에 맞게 조정 */
+}
+
+/* 로그인 페이지 오른쪽 영역 */
+.login-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 로그인 박스 스타일 */
+.login-box {
+  text-align: left;
+  width: 100%;
+  max-width: 450px; /* 최대 너비 조정 */
+  padding: 40px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+/* 로고 스타일 */
+.logo {
+  width: 190px;
+  float: right;
+  margin: 0px;
+}
+
+/* 로그인 박스 제목 스타일 */
+.login-box h2 {
+  color: #999;
+  font-size: 16px;
+  margin-bottom: 5px;
+  margin-top: 30%;
+}
+
+.login-box h1 {
+  color: #333;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+/* 폼 요소 스타일 */
+.login-box form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-box label {
+  text-align: left;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.login-box input {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* 비밀번호 찾기 링크 스타일 */
+.forgot-password {
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.forgot-password a {
+  color: #4a00e0;
+  text-decoration: none;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
+
+/* 로그인 버튼 스타일 */
+.sign-in-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+/* 회원가입 링크 스타일 */
+.sign-up {
+  margin-top: 20px;
+  text-align: center; /* 텍스트 중앙 정렬 */
+}
+
+.sign-up p {
+  color: #333;
+}
+
+.sign-up a {
+  color: #4a00e0;
+  text-decoration: none;
+}
+
+.sign-up a:hover {
+  text-decoration: underline;
+}
+
+/* 오류 메시지 스타일 */
+.error-message {
+  color: red;
+  margin-top: 10px;
+  text-align: center;
+  font-weight: bold;
+}

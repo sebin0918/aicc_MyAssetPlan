@@ -1,0 +1,286 @@
+/* Base Container */
+/* 전체 페이지 컨테이너를 화면 중앙에 정렬하고, 가로와 세로를 100%로 설정하여 중앙에 위치시킵니다. */
+.mypage-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+}
+
+/* White Box */
+/* 메인 화이트 박스 */
+.mypage-white-box {
+    width: 800px;
+    background: #ffffff;
+    box-shadow: 0px 19px 40px rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 40px;
+    margin-bottom: 60px;
+    overflow: auto; /* 내용이 박스를 넘을 경우 스크롤 추가 */
+}
+
+/* MYPAGE 텍스트 */
+.mypage-white-box p {
+    color: black;
+    text-align: left;
+    background-color: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    overflow: auto; /* 내용이 박스를 넘을 경우 스크롤 추가 */
+}
+
+/* MYPAGE 텍스트 */
+.mypage-white-box p {
+    color: black;
+    text-align: left;
+    background-color: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+}
+
+/* Form Layout */
+/* 폼 레이아웃을 설정 */
+.mypage-form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px; /* 필드 간 간격 조정 */
+    color: #000000;
+}
+  
+/* 폼 컬럼의 너비를 45%로 설정하여 두 개의 컬럼이 가로로 배치되도록 합니다. */
+.mypage-form-column {
+    width: 45%;
+}
+
+/* Form Fields */
+/* 폼 필드 내 요소를 수평으로 정렬하고, 필드 간 간격을 20px로 설정합니다. */
+.mypage-form-field {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px; /* 필드 간 간격 조정 */
+}
+  
+.mypage-form-field span{
+    color: red;
+}
+
+/* 입력 */
+.mypage-form-input {
+    flex: 1;
+    height: 40px;
+    background: #F8F3ED;
+    border: none;
+    border-radius: 8px;
+    padding: 0 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #555555;
+    margin-left: 10px; /* 라벨과의 간격 설정 */
+}
+
+
+
+/* 변경사항 버튼 */
+.mypage-submit-button {
+    width: 30%;
+    height: 40px;
+    background: #9C00FF;
+    border-radius: 20px;
+    text-align: center;
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    /* margin-top: -30px;
+    margin-left: -60%; */
+}
+  
+
+/* 변경사항 버튼 텍스트 */
+.mypage-text-submit {
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+}
+
+/* Text Only Buttons */
+/* 텍스트만 있는 오른쪽 정렬 버튼의 스타일을 설정합니다. 배경과 테두리가 없으며, 텍스트는 검정색입니다. */
+.mypage-text-only-right-button {
+    background: none;
+    border: none;
+    color: black;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    text-align: right;
+    line-height: normal;
+    display: inline-block;
+    margin-left: 500px;
+    margin-top: 20px;
+}
+
+  
+
+/* 회원탈퇴 모달 컨테이너 */
+.mypage-secession-modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(99, 99, 99, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    font-family: 'Poppins', sans-serif;
+}
+  
+/* 회원탈퇴 모달 */
+.mypage-secession-mypage-modal {
+    color: black;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    padding: 20px;
+    text-align: center;
+}
+
+.mypage-secession-mypage-modal h2{
+    font-size: 25px;
+}
+
+/* .mypage-secession-mypage-modal h2{
+    font-size: 25px;
+} */
+  
+.mypage-secession-mypage-modal p{
+    font-weight: bold;
+}
+
+
+/* 회원탈퇴 모달 버튼 */
+.mypage-secession-button {
+    background: #9C00FF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 15px;
+}
+  
+.mypage-secession-button:hover {
+    background: #3c0161;
+}
+  
+/* 회원탈퇴 모달 취소 버튼 */
+.mypage-secession-cancel-button {
+    background: grey;
+}
+  
+.mypage-secession-cancel-button:hover {
+    background: darkgrey;
+}
+
+/*성별버튼*/
+.mypage-button-group {
+    display: flex;
+    align-items: center;
+    margin-left: 10%;
+
+}
+
+/* Gender Button */
+.mypage-gender-button {
+    background: #F8F3ED;
+    border: 1px solid #ccc;
+    width: 100px;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+}
+
+/*성별버튼*/
+.mypage-button-group {
+    display: flex;
+    align-items: center;
+    margin-left: 10%;
+
+}
+
+/* Gender Button */
+.mypage-gender-button {
+    background: #F8F3ED;
+    border: 1px solid #ccc;
+    width: 100px;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    color: #333;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.mypage-gender-button .mypage-gender-icon{
+    padding-left: 8%;
+
+}
+
+.mypage-gender-button.selected {
+    background: #9C00FF;
+    border-color: #9C00FF;
+    color: #fff;
+}
+
+.mypage-gender-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+/* Gender Button Hover Effect */
+.mypage-gender-button:hover {
+    background: #9C00FF;
+}
+
+
+
+.mypage-gender-button .mypage-gender-icon{
+    padding-left: 8%;
+
+}
+
+.mypage-gender-button.selected {
+    background: #9C00FF;
+    border-color: #9C00FF;
+    color: #fff;
+}
+
+.mypage-gender-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+/* Gender Button Hover Effect */
+.mypage-gender-button:hover {
+    background: #9C00FF;
+}

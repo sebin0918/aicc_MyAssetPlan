@@ -1,0 +1,207 @@
+.signup-signup-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #6100ff; /* Ensure the entire page has the background color */
+  justify-content: center; /* Center the content vertically */
+  align-items: center; /* Center the content horizontally */
+  margin: 0;
+  padding: 0;
+}
+
+.signup-signup-container {
+  display: flex;
+  width: 90%;
+  max-width: 1400px;
+  /* background-color: #ffffff; */
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px 1;
+  position: relative; /* z-index를 사용하기 위해 필요 */
+  z-index: 10; /* signup-signup-container를 앞으로 보이게 설정 */
+  height: auto; /* 높이를 줄이기 위해 고정 높이 설정 */
+  margin: 0;
+  padding: 0;
+}
+
+.signup-signup-illustration {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 0;
+}
+
+.signup-signup-illustration img {
+  position: absolute;
+  top: 50%; /* 세로 기준 가운데 */
+  left: 90%; /* 가로 기준 2/3 위치 */
+  transform: translate(-66.66%, -50%); /* 이미지의 중심을 기준으로 조정 */
+}
+
+.signup-signup-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-signup-box {
+  text-align: left;
+  width: 100%;
+  max-width: 600px; /* Adjust the width */
+  padding: 40px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 20; /* signup-signup-container를 앞으로 보이게 설정 */
+  border-radius: 10px;
+}
+
+.signup-logo {
+  width: 190px;
+  float: right;
+  margin: 0px;
+}
+
+.signup-signup-form {
+  flex: 2;
+  padding: 40px;
+  background-color: #ffffff;
+}
+
+.signup-signup-form h2 {
+  text-align: left; /* Align heading to the left */
+  margin-bottom: 20px;
+  color: #000;
+}
+
+.signup-form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 필수 입력 필드를 나타내는 * 기호의 색상을 빨간색(#F76F71)으로 설정하고, * 기호와 라벨 텍스트 사이에 간격을 둡니다. */
+.signup-form-group span {
+  color: #F76F71; /* Red color for the * symbol */
+  margin-right: 5px; /* Space between * and label text */
+}
+
+.signup-form-group label {
+  margin-bottom: 8px;
+  color: #666;
+  text-align: left; /* 라벨을 강제로 좌측 정렬 */
+  width: 100%; /* 라벨이 전체 너비를 차지하도록 설정 */
+}
+
+.signup-form-group p {
+  font-size: 12px;
+  color: #2b2929;
+  margin-bottom: 5px;
+}
+
+.signup-form-group input[type="text"],
+.signup-form-group input[type="email"],
+.signup-form-group input[type="password"],
+.signup-form-group input[type="date"],
+.signup-form-group input[type="tel"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.signup-gender-options {
+  display: flex;
+  gap: 20px;
+}
+
+.signup-gender-options label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #666;
+}
+
+.signup-email-group {
+  display: flex;
+  align-items: center; /* 입력 필드와 버튼이 수직으로 중앙 정렬되도록 설정 */
+}
+
+.signup-email-group input {
+  flex: 1;
+}
+
+.signup-email-check-status {
+  background-color: #C5C5C5;
+  color: #fff;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  margin-left: 10px;
+}
+
+.signup-email-availability {
+  color: green;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.signup-email-confirm-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.signup-email-confirm-group .signup-email-group {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.signup-email-confirm-group input {
+  flex: 1;
+}
+
+.signup-verify-btn {
+  background-color: #C5C5C5;
+  color: #fff;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  margin-left: 10px;
+}
+
+.signup-verify-btn:hover {
+  background-color: #C5C5C5;
+}
+
+.signup-signup-btn {
+  display: block;
+  width: 100%;
+  background-color: #9c00ff;
+  color: #fff;
+  padding: 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.signup-signup-btn:hover {
+  background-color: #5b00d2;
+}
+
+.signup-footer {
+  margin-top: auto;
+}

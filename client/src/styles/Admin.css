@@ -1,0 +1,237 @@
+/* 화면 전체를 덮도록 설정 */
+#admin_body {
+  background-color: #6100ff;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.admin-panel {
+  width: 100%;
+  max-width: 1300px;
+  height: 700px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /*y*/
+}
+
+/* admin-header 수정 */
+.admin-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; /* 좌우 끝으로 배치 */
+  align-items: center; /* 수직 중앙 정렬 */
+  width: 100%;
+  height: 180px;
+  padding: 30px;
+  /* background-color: red; */
+  box-sizing: border-box; /* 패딩을 포함한 전체 너비 계산 */
+  padding-top: 2px;
+}
+
+.admin-header-left {
+  display: flex;
+  align-items: center;
+
+}
+
+.admin-header-right {
+  display: flex;
+  align-items: center;
+}
+
+.admin-logo {
+  width: 200px;
+  margin-right: 20px; /* 로고와 제목 사이 간격 */
+}
+
+.admin-header-left p {
+  color: #000;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: -80px;
+  margin-left: -210px;
+  text-align: left;
+}
+
+.admin-search-input {
+  height: 30px;
+  width: 150px;
+  padding: 8px 12px; /* 적절한 패딩 설정 */
+  border: 2px solid #6100ff;
+  border-radius: 20px;
+  font-size: 16px;
+  margin-right: 15px; /* 로그아웃 버튼과의 간격 */
+  outline: none; /* 포커스 시 테두리 제거 */
+  transition: border-color 0.3s;
+}
+
+.admin-search-input:focus {
+  border-color: #4500c4; /* 포커스 시 테두리 색상 변경 */
+}
+
+.admin-logout-button {
+  width: 150px;
+  height: 50px;
+  font-size: 20px;
+  background-color: #6100ff;
+  color: #fff;
+  border: none; /* 테두리 제거 */
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.admin-logout-button:hover {
+  background-color: red;
+}
+
+/* 여기부터 페이지네이터 */
+.admin_pageslide {
+  width: 100%;
+}
+
+/* 페이지네이션 컨테이너 */
+.admin-pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+  padding: 0;
+  margin: 40px 0;
+}
+
+/* 각 페이지를 버튼처럼 스타일링 */
+.admin-pagination-page {
+  margin: 0 5px;
+}
+
+.admin-pagination-link {
+  display: inline-block;
+  padding: 10px 15px;
+  margin: 0 5px;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  text-decoration: none;
+  color: #333;
+}
+
+.admin-pagination-link:hover {
+  background-color: #e0e0e0;
+}
+
+/* 활성화된 페이지 */
+.admin-pagination-active .admin-pagination-link {
+  background-color: #6100ff;
+  color: white;
+}
+
+/* 이전 및 다음 버튼 스타일 */
+.admin-pagination-previous,
+.admin-pagination-next {
+  margin: 0 10px;
+  padding: 10px 10px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 5px;
+  background-color: #6100ff;
+}
+
+.admin-pagination-previous:hover,
+.admin-pagination-next:hover {
+  background-color: red;
+}
+
+
+.admin-pagination-button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #6100ff;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.admin-pagination-button:hover {
+  background-color: red;
+}
+
+/* 여기부터 테이블 */
+.admin-user-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 14px;
+  text-align: center;
+  color: #000;
+}
+
+.admin-maintext {
+  background-color: #f9f9f9;
+  color: #000;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.admin-user-table th,
+.admin-user-table td {
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+  color: #000;
+}
+
+/* 테이블 행 색상 변경 */
+.admin-user-table tr:nth-child(odd) td {
+  background-color: #f9f5f5;
+}
+
+.admin-user-table tr:nth-child(even) td {
+  background-color: #f3f2f2;
+}
+
+.admin-status-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.admin-status-dot.online {
+  background-color: green;
+}
+
+.admin-status-dot.offline {
+  background-color: red;
+}
+
+.admin-warning-button,
+.admin-delete-button {
+  padding: 5px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.admin-warning-button {
+  background-color: #f0f0f0;
+  color: #333;
+  margin-right: 5px;
+}
+
+.admin-delete-button {
+  background-color: #ff6666;
+  color: white;
+}
+
+.admin-delete-button:hover {
+  background-color: #e60000;
+}

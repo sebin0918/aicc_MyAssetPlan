@@ -1,0 +1,134 @@
+
+#news-container {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 20px;
+  width: 1200px;
+}
+
+
+
+.news-sidebar {
+  flex: 1;
+  background-color: #fff;
+  color: #000;
+  padding: 20px;
+  border-radius: 10px;
+  margin-left: 20px;
+}
+
+.news-main-content {
+  flex: 2;
+  padding-right: 20px;
+  border-right: 2px solid #fff;
+
+}
+
+.news-main-content h1 {
+  text-align:left;
+  font-size: 2rem;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #ccc;
+}
+
+.news-main-content p {
+  text-align:left;
+}
+
+.news-sidebar h2 {
+  text-align:left;
+  font-size: 1.5rem;
+  padding-bottom: 10px;
+  margin-bottom: 0px;
+  border-bottom: 2px solid #ccc;
+  margin-right: 20px;
+}
+
+.news-sidebar h3 {
+  padding-top: 0px;
+  padding-bottom: 5px;
+}
+
+.news-simple-list {
+  overflow-y:auto;
+  height: 500px;
+}
+
+.news-sidebar div div a {
+  padding-bottom: 10px;
+  font-size: 1rem;
+  font-weight: 540;
+  width: 200px;
+  text-decoration: none;
+  color: black;
+}
+
+.news-sidebar div div img {
+  justify-content: flex-end;
+}
+
+/* 스크롤바 스타일 */
+.news-simple-list::-webkit-scrollbar {
+  width: 12px;
+  /* 스크롤바의 너비 */
+}
+
+.news-simple-list::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  border-radius: 10px;
+}
+
+.news-simple-list::-webkit-scrollbar-thumb:hover {
+  background-color: #bbaa8a;
+  /* 마우스 오버 시 핸들 색상 */
+}
+
+.news-simple-list::-webkit-scrollbar-track {
+  background-color: lightgrey;
+  border-radius: 10px;
+}
+
+.news-bottom {
+  margin-top: 150px;
+  border-bottom: 2px solid rgba(255, 255, 255, .5);;
+}
+
+.news-bottom p {
+  text-align: right;
+}
+
+.news-bottom p a {
+  text-decoration: none;
+  color: rgb(160, 238, 252);
+}
+
+.news-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0px;
+  height: 90px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #ccc;
+  margin-right: 11px;
+}
+
+.news-item img {
+  margin-left: 10px;
+  width: 150px;
+  height: 70px;
+  object-fit: cover;
+}
+
+.news-desc-text {
+  flex: 1;
+}
+
+#news-container div.news-sidebar div div h3,
+#news-container div.news-sidebar div div p {
+  margin: 0px;
+  text-align: left;
+}
+
+

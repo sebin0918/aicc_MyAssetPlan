@@ -1,0 +1,103 @@
+
+
+/* 추가된 슬라이드 관련 스타일 */
+.slider-container {
+  position: relative;
+  width: 1280px; /* 슬라이더의 너비를 1280px로 설정 */
+  height: 700px;
+  max-height: 900px;
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  background: none; /* 배경색 없음 */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.slide-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+ /* transition: transform 0.5s ease-in-out;  이미지 전환 애니메이션 */
+}
+
+/* 개별 이미지 스타일 */
+.image-1 {
+  padding-bottom: 250px;
+  text-align: right;
+  /* background-color: red; */
+  float: right;
+  padding-right: 45%;
+  padding-top: 3%;
+  width: 45%;
+  padding-right: 10%;
+}
+
+
+.homepage-overlay-text{
+  font-size: 40px;
+}
+.homepage-overlay-text h1{
+  margin-top: 15%;
+}
+
+.homepage-overlay-text p{
+  margin-top: 5%;
+}
+
+.image-2 {
+  /* test_2.png에 대한 추가 스타일 */
+}
+
+.image-3 {
+  /* test_3.png에 대한 추가 스타일 */
+}
+
+.image-4 {
+  /* test_4.png에 대한 추가 스타일 */
+}
+
+.image-5 {
+  /* test_5.png에 대한 추가 스타일 */
+}
+
+/* 네비게이션 스타일 */
+.homepage-nav-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  
+}
+
+.homepage-nav-dot {
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  font-size: 20px;
+  color: white; /* 텍스트 색상을 하얀색으로 설정 */
+  background: none; /* 배경색을 제거 */
+}
+
+.homepage-nav-dot.active {
+  color: white; /* 활성화된 점의 텍스트 색상을 하얀색으로 설정 */
+}
+
+.homepage-nav-dot:hover {
+  color: white; /* 호버 시 텍스트 색상을 하얀색으로 유지 */
+}
+
+.homepage-nav-dot:focus {
+  outline: none;
+}
+
+

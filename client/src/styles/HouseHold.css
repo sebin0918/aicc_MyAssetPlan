@@ -1,0 +1,451 @@
+@import url('https://unpkg.com/@fullcalendar/core@5.10.1/main.min.css');
+@import url('https://unpkg.com/@fullcalendar/daygrid@5.10.1/main.min.css');
+
+/* Household 기본 스타일 배경 (페이지 전체영역) */
+.household {
+  width: 100%;
+  background-color: #000000;
+}
+
+/* Household 풀캘린더 라이브러리 전체영역 */
+.household .household-body {
+  width: 1200px;
+  margin: auto;
+}
+
+/* 가계부 풀캘린더 라이브 영역에서 텍스트를 왼쪽 정렬 */
+.household .household-body .household-header {
+  text-align: left;
+}
+
+/* 달력 스타일 */
+div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner {
+  height: 120px;
+}
+
+/* 날짜 셀 호버 효과 */
+.fc-daygrid-day:hover {
+  background-color: rgba(97, 0, 255, 0.2);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* 수입 및 지출 스타일 총출금, 입금 부분 */
+.household-amount-plus,
+.household-amount-minus {
+  text-align: center;
+  font-size: 30px;
+  background-color: transparent;
+  border: 0;
+  margin: auto;
+  padding: 0;
+}
+
+/* 총출금의 총 입금 부분 */
+.household-amount-plus {
+  -webkit-text-fill-color: #f76f71;
+}
+
+/* 총출금의 총 출금 부분 */
+.household-amount-minus {
+  -webkit-text-fill-color: #5dc8cc;
+}
+
+/* 달력 화살표 버튼 스타일 */
+button.fc-dayGridMonth-button.fc-button.fc-button-primary,
+button.fc-dayGridMonth-button.fc-button.fc-button-primary.fc-button-active,
+button.fc-prev-button.fc-button.fc-button-primary,
+button.fc-next-button.fc-button.fc-button-primary {
+  background-color: #6100ff;
+  color: #ffffff;
+}
+
+/* 이전에 만들어 놓았던 (월, 주, 일) 불필요한 버튼 숨기기 */
+button.fc-dayGridWeek-button,
+button.fc-dayGridDay-button {
+  display: none;
+}
+
+/* 라이브러리 안에 있는 작은 칸들 하나하나 부분 */
+.house_total-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  margin-top: 50px;
+  padding-left: auto;
+}
+
+.household_minustotalpay2 {
+  text-align: left;
+  margin-bottom: 5px;
+  font-size: 17px;
+  width: 100%;
+  color: #00c1d4;
+}
+
+.household_plustotalpay2 {
+  text-align: left;
+  margin-bottom: 0;
+  font-size: 17px;
+  width: 100%;
+  color: #ff9e9e;
+}
+
+/* 모달 스타일 */
+.household-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* 모달 컨텐츠 */
+.household-modal-content {
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  width: 1000px;
+  height: 800px;
+  background-color: #bbff00;
+  position: relative;
+  overflow: hidden;
+  background: none;
+}
+
+.household-modal-header {
+  background-color: #6100ff;
+  color: #ffffff;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.household-modal-title {
+  margin: 0;
+  font-size: 20px;
+}
+
+/* 모달 본문 스타일 */
+.household-modal-body {
+  height: 653px;
+  padding: 20px;
+  background-color: #ffffff;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Date 박스 고정 */
+#household-modalDate {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  color: #000000;
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* 박스 컨테이너 스타일 */
+.household-box-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* 박스 배치 */
+#household-plusbox,
+#household-minusbox {
+  width: 49%;
+  height: 450px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+}
+
+#household-plusbox {
+  background-color: #00c1d4;
+  overflow-y: auto;
+  position: relative;
+}
+
+#household-minusbox {
+  background-color: #ff9e9e;
+  overflow-y: auto;
+  position: relative;
+}
+
+#household-minusbox h2,
+#household-plusbox h2 {
+  text-align: center;
+}
+
+
+.household_plustotalpay,
+.household_minustotalpay {
+  /* background-color: red; */
+  font-size: 20px;
+  text-align: center;
+  margin-top: -10px;
+}
+
+.household_plusdetail{
+  text-align: left;
+  margin-top: 10px;
+}
+
+
+
+/* ******************************************** 입금 내역 및 출금 내역 작은박스 스타일 ******************************************** */
+.household_plusinbuttonbox,
+.household_minusinbuttonbox {
+  width: 90%;
+  max-width: 450px;
+  height: 9vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 7%;
+  left: 5%;
+  overflow: hidden;
+  border-radius: 5px;
+  /* background-color: rgba(192, 230, 149, 0.5); */
+  /* background-color: #F8F3ED; */
+  /* background-color: rgba(173, 216, 230, 0.5); */
+  /* background-color: rgba(255, 182, 193, 0.5); */
+  /* background-color: rgba(211, 211, 211, 0.5); */
+  background-color: rgba(245, 245, 220, 0.5); 
+  /* background-color: rgba(152, 251, 152, 0.5); */
+}
+
+/* 자식 요소들에 대한 CSS */
+.household_plus_in_detail,
+.household_minus_in_detail,
+.household_plus_in_amount,
+.household_minus_in_amount,
+.household_plus_in_check_hold,
+.household_minus_in_check_hold,
+.household_plus_in_btn_save,
+.household_minus_in_btn_save {
+  box-sizing: border-box;
+}
+
+/* 입금 내역 텍스트 스타일 */
+.household_plus_in_detailtext,
+.household_minus_in_detailtext {
+  display: block;
+  margin-bottom: -15px;
+  margin-left: 15px;
+  font-size: 15px;
+  text-align: center;
+  font-weight: bold;
+  color: #000;
+  /* background-color: red; */
+}
+
+
+/* 입력창 스타일 */
+.household_plus_in_detail,
+.household_minus_in_detail {
+  width: 170px;
+  height: 30px;
+  margin-left: 15px;
+  margin-top: 20px;
+  padding: 0 10px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  /* background-color: red; */
+}
+
+
+/* 입금 및 출금 내역의 금액 텍스트 스타일 */
+.household_plus_in_amounttext,
+.household_minus_in_amounttext {
+  display: block;
+  margin-bottom: -15px;
+  margin-left: -25px;
+  font-size: 15px;
+  text-align: center;
+  font-weight: bold;
+  color: #000;
+  /* background-color: red; */
+}
+
+
+
+.household_plus_in_amount,
+.household_minus_in_amount {
+  width: 80px;
+  height: 30px;
+  margin-left: -25px;
+  padding: 0 10px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  margin-top: 20px;
+}
+
+/* 포커스 상태에서 테두리 제거 */
+.household input:focus {
+  outline: none;
+  border: 3px solid #6100ff;
+}
+
+/* 입금 및 출금 내역의 체크박스 스타일 */
+.household_plus_in_check_hold,
+.household_minus_in_check_hold {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  margin-left: -25px;
+
+  /* background-color:#6100ff;
+  border:2px dotted #fff; */
+}
+
+.household_plus_in_check_holdtext,
+.household_minus_in_check_holdtext {
+  font-size: 15px;
+  font-weight: bold;
+  color: #000;
+  /* background-color: rgb(37, 255, 175); */
+  text-align: center;
+  margin-left: 1px; /* 고정 글씨와 체크박스 사이 간격 추가 */
+  margin-top: -3px;
+
+}
+
+/* 체크박스 스타일 */
+.household_check_hold,
+.household_check_hold_minus {
+  width: 20px;
+  height: 20px;
+  /* background-color: rgb(71, 196, 249); */
+  margin: 8px 15px; /* 체크박스와 임시저장 버튼 사이 간격 추가 */
+}
+
+/* 버튼 스타일 */
+.household_plus_in_btn_save,
+.household_minus_in_btn_save {
+  width: 80px;
+  height: 40px;
+  margin-bottom: 1px;
+  margin-left: -25px;
+  margin-right: 10px;
+  padding: 1px 0;
+  color: #000;
+  border: 1px solid #d7d7d7;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 17px;
+  cursor: pointer;
+  font-weight: bold;
+
+  /* background-color: rgba(0, 162, 255, 0.9); */
+  /* background-color: rgba(200, 200, 200, 0.9); */
+  /* background-color: rgba(102, 204, 153, 0.9); */
+   /* background-color: rgba(255, 159, 64, 0.9); */
+ /* background-color: rgba(255, 223, 0, 0.9); */
+  background: #FBF29E;
+   /* background-color: #6100ff;  */
+}
+
+.household_plus_in_btn_save:hover,
+.household_minus_in_btn_save:hover {
+  background-color: #6100ff;
+  color: #fff;
+}
+
+/* 메모 박스 스타일 */
+#household-memobox {
+  width: 100%;
+  background: #FBF29E;
+  height: 120px;
+  padding: 5px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+#household-memobox textarea {
+  width: 100%;
+  height: 100%;
+  border: none;
+  resize: none;
+  overflow-y: auto;
+  box-sizing: border-box;
+  background: transparent;
+  font-size: 16px;
+  line-height: 2.0;
+  padding: 2%;
+  outline: none;
+  color: #000;
+  font-family: inherit;
+}
+
+
+
+/* 모달 푸터 스타일 */
+.household-modal-footer {
+  padding: 30px;
+  display: flex;
+  justify-content: flex-end;
+  background-color: #6100ff;
+}
+
+/* 모달 푸터 버튼 스타일 */
+.household-btn {
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  margin-right: 8px;
+  margin-top: -20px;
+  background: blue;
+}
+
+.household-btn-edit {
+  background-color: #FBF29E;
+  width: 150px;
+  height: 35px;
+  color: #000000;
+  font-weight: bold;
+  font-size: 110%;
+}
+
+.household-btn-edit:hover {
+  color: #fff;
+  background-color: #00c1d4;
+}
+
+.household-btn-close {
+  background-color: #fff;
+  width: 150px;
+  height: 35px;
+  color: #000000;
+  font-weight: bold;
+  font-size: 110%;
+}
+
+.household-btn-close:hover {
+  background-color: #ff9e9e;
+}
