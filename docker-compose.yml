@@ -1,0 +1,59 @@
+version: '3'
+services:
+  mariadb:
+    build: ./map_database  # MariaDB Dockerfile을 사용하여 이미지를 빌드
+    container_name: aicc_mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: root1234
+      MYSQL_DATABASE: AICC_DB_MAP
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql  # 로컬 폴더가 아닌 Docker 볼륨 사용
+      - ./map_database:/docker-entrypoint-initdb.d  # 초기화 스크립트 복사
+    networks:
+      - aicc_network
+
+  server:
+    build: ./server
+    container_name: aicc_server
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - DB_HOST=mariadb
+      - DB_PORT=3306
+      - DB_USER=root
+      - DB_PASSWORD=root1234
+      - DB_NAME=AICC_DB_MAP
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mariadb
+    networks:
+      - aicc_network
+    mem_limit: 2g
+
+  client:
+    build: ./client
+    container_name: aicc_client
+    ports:
+      - "3000:3000"
+    depends_on:
+      - server
+    networks:
+      - aicc_network
+
+  redis:
+    image: "redis:alpine"
+    container_name: aicc_redis
+    ports:
+      - "6379:6379"
+    networks:
+      - aicc_network
+
+networks:
+  aicc_network:
+    driver: bridge
+
+volumes:
+  mariadb_data:

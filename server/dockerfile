@@ -1,0 +1,20 @@
+# Node.js 기반 서버 설정
+FROM node:16
+
+# 앱 디렉토리 생성
+WORKDIR /usr/src/app
+
+# package.json과 package-lock.json 복사
+COPY package*.json ./
+
+# 모든 의존성 설치
+RUN npm install
+
+# 나머지 앱 파일 복사
+COPY . .
+
+# 포트 설정
+EXPOSE 5000
+
+# 서버 실행
+CMD ["npm", "start"]
