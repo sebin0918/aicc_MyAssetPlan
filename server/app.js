@@ -7,6 +7,7 @@ const dotenv = require('dotenv');
 const http = require('http');
 const { Server } = require('socket.io');
 const cookieParser = require('cookie-parser');
+const rateLimit = require('express-rate-limit');  // Rate Limiting 미들웨어 api호출 제한
 
 const myAssetPlanerRoutes = require('./src/routes/myAssetPlanerRoutes');
 const registerRoutes = require('./src/routes/RegisterRoutes');
@@ -20,6 +21,10 @@ const chatbot = require('./src/routes/chatbotRoutes');
 const newscheck = require('./src/routes/newsCheckRoutes');
 const stockPredictRoutes = require('./src/routes/stockPredictRoutes');
 const componentsRoutes = require('./src/routes/componentsRoutes');
+
+// python process
+const { startPythonProcess } = require('./src/controllers/chatbotController');
+startPythonProcess();
 
 dotenv.config();
 
@@ -64,6 +69,40 @@ app.use(session({
   },
 }));
 
+
+// api 호출 제한 미들웨어
+const apiLimiter = rateLimit({
+  windowMs: 10 * 60 * 1000, // 10분 간격
+  max: 1000, // 10분 동안 최대 200번의 요청 허용
+  message: "너무 많은 요청을 보내셨습니다. 10분 후 다시 시도해주세요.",
+  headers: true, // 응답 헤더에 제한 관련 정보 포함
+});
+
+// 응답이 완료된 후 헤더에서 남은 요청 수 및 제한 정보를 로그로 남기기
+app.use('/api/', (req, res, next) => {
+  res.on('finish', () => {
+    const rateLimitLimit = res.getHeader('X-RateLimit-Limit');
+    const rateLimitRemaining = res.getHeader('X-RateLimit-Remaining');
+    const retryAfter = res.getHeader('Retry-After');
+
+    if (rateLimitLimit && rateLimitRemaining) {
+      // 남은 요청 수 및 제한 정보를 출력
+      console.log(`API 요청 상태:
+        IP: ${req.ip},
+        남은 요청 수: ${rateLimitRemaining},
+        최대 요청 수: ${rateLimitLimit},
+        재시도 가능 시간: ${retryAfter || '없음'} 초 후
+      `);
+    } else {
+      console.log('RateLimit 관련 헤더가 없습니다.');
+    }
+  });
+  next();
+});
+
+// 모든 API에 호출 제한 적용
+app.use('/api/', apiLimiter);
+
 // Routes 설정
 app.use('/api/my-asset-planer', myAssetPlanerRoutes);
 app.use('/api/register', registerRoutes);
@@ -85,6 +124,9 @@ const io = new Server(server, {
     credentials: true
   }
 });
+
+// 최대 동시 접속자 수 설정 (10명으로 설정 / t2.large 인스턴스(server)의 최대 접속자 25명 제한이므로.)
+const MAX_CONCURRENT_USERS = 20;
 
 // 접속자 관리 변수
 let anonymousCounter = 0; // 익명 번호 관리
@@ -111,6 +153,16 @@ subClient.on('message', (channel, message) => {
 
 // Socket.IO 연결 관리
 io.on('connection', (socket) => {
+
+  // 동시 접속자 수 제한
+  if (onlineUsers.size >= MAX_CONCURRENT_USERS) {
+    // 동시 접속자 수가 초과되면 연결을 끊음
+    socket.emit('connectionError', '동시 접속자 수인 10명을 초과되었습니다. 나중에 다시 시도해주세요.');
+    socket.disconnect();
+    console.log('접속 거부됨: 동시 접속자 수 초과');
+    return;
+  }
+
   const sessionId = socket.handshake.sessionID;
 
   // 접속 시 랜덤 익명 번호 부여
