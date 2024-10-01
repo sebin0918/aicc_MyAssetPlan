@@ -37,3 +37,5 @@ jobs:
           ssh -o StrictHostKeyChecking=no -i /home/ubuntu/server_key.pem -A -t ${{ secrets.AWS_EC2_USER }}@${{ secrets.SERVER_PRIVATE_IP }} \
           'ssh -o StrictHostKeyChecking=no -i /home/ubuntu/database_key.pem ${{ secrets.AWS_EC2_USER }}@${{ secrets.DATABASE_PRIVATE_IP }} \
           cd ~/aicc_project/map_database && git pull && docker-compose down && docker-compose build && docker-compose up -d'"
+
+          
