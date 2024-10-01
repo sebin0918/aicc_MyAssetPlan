@@ -32,9 +32,8 @@ jobs:
         chmod 400 client_key.pem server_key.pem
 
         # 클라이언트 인스턴스(퍼블릭)에 먼저 SSH 접속
-        ssh -o StrictHostKeyChecking=no -i /home/ubuntu/client_key.pem -A -t ${{ secrets.AWS_EC2_USER }}@${{ secrets.CLIENT_PUBLIC_IP }} "\
-          ssh -o StrictHostKeyChecking=no -i /home/ubuntu/server_key.pem ${{ secrets.AWS_EC2_USER }}@${{ secrets.SERVER_PRIVATE_IP }} \
+        ssh -o StrictHostKeyChecking=no -i ./client_key.pem -A -t ${{ secrets.AWS_EC2_USER }}@${{ secrets.CLIENT_PUBLIC_IP }} "\
+          ssh -o StrictHostKeyChecking=no -i ./server_key.pem ${{ secrets.AWS_EC2_USER }}@${{ secrets.SERVER_PRIVATE_IP }} \
           'cd ~/aicc_project/server && git pull && docker-compose down && docker-compose build && docker-compose up -d'"
 
 
-          

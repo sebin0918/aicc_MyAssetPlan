@@ -33,9 +33,8 @@ jobs:
         chmod 400 client_key.pem server_key.pem database_key.pem
 
         # 클라이언트 -> 서버 -> 데이터베이스 인스턴스 경유
-        ssh -o StrictHostKeyChecking=no -i /home/ubuntu/client_key.pem -A -t ${{ secrets.AWS_EC2_USER }}@${{ secrets.CLIENT_EC2_HOST }} "\
-          ssh -o StrictHostKeyChecking=no -i /home/ubuntu/server_key.pem -A -t ${{ secrets.AWS_EC2_USER }}@${{ secrets.SERVER_PRIVATE_IP }} \
-          'ssh -o StrictHostKeyChecking=no -i /home/ubuntu/database_key.pem ${{ secrets.AWS_EC2_USER }}@${{ secrets.DATABASE_PRIVATE_IP }} \
+        ssh -o StrictHostKeyChecking=no -i ./client_key.pem -A -t ${{ secrets.AWS_EC2_USER }}@${{ secrets.CLIENT_EC2_HOST }} "\
+          ssh -o StrictHostKeyChecking=no -i ./server_key.pem -A -t ${{ secrets.AWS_EC2_USER }}@${{ secrets.SERVER_PRIVATE_IP }} \
+          'ssh -o StrictHostKeyChecking=no -i ./database_key.pem ${{ secrets.AWS_EC2_USER }}@${{ secrets.DATABASE_PRIVATE_IP }} \
           cd ~/aicc_project/map_database && git pull && docker-compose down && docker-compose build && docker-compose up -d'"
 
-          
