@@ -20,7 +20,7 @@ function ChatBot() {
   useEffect(() => {
     const fetchChatList = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/chat-bot/chatList`, { credentials: 'include' });
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/chat-bot/chatList`, { credentials: 'include' });
         if (response.ok) {
           const chatdata = await response.json();
           setChatList(chatdata);
@@ -135,7 +135,7 @@ function ChatBot() {
     }
     
     try {
-      const response = await fetch(`http://localhost:5000/api/chat-bot/chatDetail/${chatId}`, { credentials: 'include' });
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/chat-bot/chatDetail/${chatId}`, { credentials: 'include' });
       if (response.ok) {
         const data = await response.json();
         console.log(data.cb_text)
@@ -166,9 +166,15 @@ function ChatBot() {
                 <p>채팅 기록이 없습니다.</p>
               ) : (
                 chatList.map((ct, index) => {
+                  // ct.text가 존재하는지 확인하고 문자열 타입인지 확인
+                  if (typeof ct.text !== 'string') {
+                    console.error('ct.text is not a string:', ct.text);
+                    return null; // 잘못된 데이터는 렌더링하지 않음
+                  }
+              
                   const lines = ct.text.split('\n'); // 줄바꿈으로 텍스트 분리
                   const isLongText = lines.length > 10; // 10줄이 넘는지 확인
-
+              
                   return (
                     <div key={index} className={`ChatBot-message-container ${ct.type === 'user' ? 'user' : 'bot'}`}>
                       <p style={{ whiteSpace: 'pre-line' }} className={`ChatBot-message ${ct.type === 'user' ? 'ChatBot-question' : 'ChatBot-answer'}`}>

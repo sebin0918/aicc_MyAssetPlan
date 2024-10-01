@@ -32,13 +32,15 @@
 
 1. cd (프로젝트의 server 폴더경로)
 2. `npm install`
-3. `npm install nodemailer`
-4. `npm install ioredis`
-5. `npm install socket.io`
-6. `npm install express-socket.io-session`
-7. `node join_security/hashExistingPasswords.js` 해당 부분은 DB_setting.py를 실행하고나면 무조건 해줘야한다.
-8. ctrl + c 
-9. `node app.js`
+3. `npm install express-rate-limit` api 호출 제한을 위해 설치
+4. `npm install nodemailer`
+5. `python -m spacy download ko_core_news_sm` chatbot 이용을 위한 한국어 모델 설치
+6. `npm install ioredis`
+7. `npm install socket.io`
+8. `npm install express-socket.io-session`
+9. `node join_security/hashExistingPasswords.js` 해당 부분은 DB_setting.py를 실행하고나면 무조건 해줘야한다.
+10. ctrl + c 
+11. `node app.js`
 
 ## server 편리하게 사용하는  nodemon 사용방법
 1. server 폴더 경로 이동

@@ -22,7 +22,7 @@ const newscheck = require('./src/routes/newsCheckRoutes');
 const stockPredictRoutes = require('./src/routes/stockPredictRoutes');
 const componentsRoutes = require('./src/routes/componentsRoutes');
 
-// python process
+// python process for chatbot
 const { startPythonProcess } = require('./src/controllers/chatbotController');
 startPythonProcess();
 
@@ -48,7 +48,7 @@ redisClient.on('error', (err) => {
 });
 
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: process.env.CLIENT_URL, // 클라이언트 주소
   credentials: true,
 }));
 
@@ -119,7 +119,7 @@ app.use('/api/components', componentsRoutes);
 
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: process.env.CLIENT_URL, // 클라이언트 주소
     methods: ["GET", "POST"],
     credentials: true
   }
